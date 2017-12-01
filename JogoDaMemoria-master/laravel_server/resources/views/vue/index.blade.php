@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('title', 'Vue.js App')
+@section('title', 'Jogo Da Memória')
 
 @section('content')
 	
@@ -9,7 +9,7 @@
 @endsection
 
 @section('pagescript')
-<script src="js/vueapp.js"></script>
+<script src="js/app.js"></script>
 
 <!-- <script src="/js/manifest.js"></script>
 <script src="/js/vendor.js"></script>
