@@ -4,7 +4,7 @@
 
 @section('content')
 	
-	<router-link to="/game">Game</router-link>
+	<router-link to="/singlememorygame">Game</router-link>
 	<router-view></router-view>
 @endsection
 

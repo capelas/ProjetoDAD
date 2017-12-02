@@ -18,10 +18,11 @@ Vue.use(VueRouter);
 //Vue.use(VueSocketio, 'http://192.168.10.10:8080');
 //Vue.use(VueSocketio, 'http://192.168.10.1:8080');
 
-const singleplayer_memorygame = Vue.component('singlegame',require('./components/singleplayer_memorygame.vue'));
+const game = Vue.component('game',require('./components/Example.vue'));
 
 const routes = [
-  { path: '/singlememorygame', component: singleplayer_memorygame }
+  { path: '/', redirect: '/game' },
+  { path: '/game', component: game }
 ];
 
 const router = new VueRouter({
@@ -31,8 +32,8 @@ const router = new VueRouter({
 const app = new Vue({
   router,
   data:{
-    player1:undefined,
-    player2: undefined,
-    
+    //player1:undefined,
+    //player2: undefined,
+    //departments: [],
   }
 }).$mount('#app');

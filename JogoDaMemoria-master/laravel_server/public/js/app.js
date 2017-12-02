@@ -963,7 +963,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(42);
+module.exports = __webpack_require__(43);
 
 
 /***/ }),
@@ -972,7 +972,7 @@ module.exports = __webpack_require__(42);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_router__ = __webpack_require__(38);
 /*jshint esversion: 6 */
 
 /**
@@ -993,9 +993,9 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 //Vue.use(VueSocketio, 'http://192.168.10.10:8080');
 //Vue.use(VueSocketio, 'http://192.168.10.1:8080');
 
-var game = Vue.component('game', __webpack_require__(53));
+var singleplayer_memorygame = Vue.component('singlegame', __webpack_require__(53));
 
-var routes = [{ path: '/', redirect: '/game' }, { path: '/game', component: game }];
+var routes = [{ path: '/singlememorygame', component: singleplayer_memorygame }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
   routes: routes
@@ -1004,9 +1004,9 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
 var app = new Vue({
   router: router,
   data: {
-    //player1:undefined,
-    //player2: undefined,
-    //departments: [],
+    player1: undefined,
+    player2: undefined
+
   }
 }).$mount('#app');
 
@@ -42685,134 +42685,7 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(4)))
 
 /***/ }),
-/* 38 */,
-/* 39 */
-/***/ (function(module, exports) {
-
-/* globals __VUE_SSR_CONTEXT__ */
-
-// IMPORTANT: Do NOT use ES2015 features in this file.
-// This module is a runtime utility for cleaner component module output and will
-// be included in the final webpack user bundle.
-
-module.exports = function normalizeComponent (
-  rawScriptExports,
-  compiledTemplate,
-  functionalTemplate,
-  injectStyles,
-  scopeId,
-  moduleIdentifier /* server only */
-) {
-  var esModule
-  var scriptExports = rawScriptExports = rawScriptExports || {}
-
-  // ES6 modules interop
-  var type = typeof rawScriptExports.default
-  if (type === 'object' || type === 'function') {
-    esModule = rawScriptExports
-    scriptExports = rawScriptExports.default
-  }
-
-  // Vue.extend constructor export interop
-  var options = typeof scriptExports === 'function'
-    ? scriptExports.options
-    : scriptExports
-
-  // render functions
-  if (compiledTemplate) {
-    options.render = compiledTemplate.render
-    options.staticRenderFns = compiledTemplate.staticRenderFns
-    options._compiled = true
-  }
-
-  // functional template
-  if (functionalTemplate) {
-    options.functional = true
-  }
-
-  // scopedId
-  if (scopeId) {
-    options._scopeId = scopeId
-  }
-
-  var hook
-  if (moduleIdentifier) { // server build
-    hook = function (context) {
-      // 2.3 injection
-      context =
-        context || // cached call
-        (this.$vnode && this.$vnode.ssrContext) || // stateful
-        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
-      // 2.2 with runInNewContext: true
-      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-        context = __VUE_SSR_CONTEXT__
-      }
-      // inject component styles
-      if (injectStyles) {
-        injectStyles.call(this, context)
-      }
-      // register component module identifier for async chunk inferrence
-      if (context && context._registeredComponents) {
-        context._registeredComponents.add(moduleIdentifier)
-      }
-    }
-    // used by ssr in case component is cached and beforeCreate
-    // never gets called
-    options._ssrRegister = hook
-  } else if (injectStyles) {
-    hook = injectStyles
-  }
-
-  if (hook) {
-    var functional = options.functional
-    var existing = functional
-      ? options.render
-      : options.beforeCreate
-
-    if (!functional) {
-      // inject component registration as beforeCreate hook
-      options.beforeCreate = existing
-        ? [].concat(existing, hook)
-        : [hook]
-    } else {
-      // for template-only hot-reload because in that case the render fn doesn't
-      // go through the normalizer
-      options._injectStyles = hook
-      // register for functioal component in vue file
-      options.render = function renderWithStyleInjection (h, context) {
-        hook.call(context)
-        return existing(h, context)
-      }
-    }
-  }
-
-  return {
-    esModule: esModule,
-    exports: scriptExports,
-    options: options
-  }
-}
-
-
-/***/ }),
-/* 40 */,
-/* 41 */,
-/* 42 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45442,11 +45315,138 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
+/* 39 */,
+/* 40 */
+/***/ (function(module, exports) {
+
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file.
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+module.exports = function normalizeComponent (
+  rawScriptExports,
+  compiledTemplate,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier /* server only */
+) {
+  var esModule
+  var scriptExports = rawScriptExports = rawScriptExports || {}
+
+  // ES6 modules interop
+  var type = typeof rawScriptExports.default
+  if (type === 'object' || type === 'function') {
+    esModule = rawScriptExports
+    scriptExports = rawScriptExports.default
+  }
+
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (compiledTemplate) {
+    options.render = compiledTemplate.render
+    options.staticRenderFns = compiledTemplate.staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = injectStyles
+  }
+
+  if (hook) {
+    var functional = options.functional
+    var existing = functional
+      ? options.render
+      : options.beforeCreate
+
+    if (!functional) {
+      // inject component registration as beforeCreate hook
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    } else {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return existing(h, context)
+      }
+    }
+  }
+
+  return {
+    esModule: esModule,
+    exports: scriptExports,
+    options: options
+  }
+}
+
+
+/***/ }),
+/* 41 */,
+/* 42 */,
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(39)
+var normalizeComponent = __webpack_require__(40)
 /* script */
 var __vue_script__ = __webpack_require__(54)
 /* template */
@@ -45467,7 +45467,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources/assets/js/components/game.vue"
+Component.options.__file = "resources/assets/js/components/singleplayer_memorygame.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -45477,9 +45477,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-7c293f89", Component.options)
+    hotAPI.createRecord("data-v-ff6161fc", Component.options)
   } else {
-    hotAPI.reload("data-v-7c293f89", Component.options)
+    hotAPI.reload("data-v-ff6161fc", Component.options)
 ' + '  }
   module.hot.dispose(function (data) {
     disposed = true
@@ -45512,18 +45512,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	props: ['game'],
-	data: function data() {
-		return {};
-	},
-	methods: {
-		pieceImageURL: function pieceImageURL(piece) {
-			var imgSrc = String(piece);
-			return 'img/' + imgSrc + '.png';
-		}
-	}
+    data: function data() {
+        return {
+            title: 'Memory Game',
+            showSuccess: false,
+            showFailure: false,
+            successMessage: '',
+            failMessage: '',
+            currentValue: 1,
+            gameEnded: false,
+            player1User: undefined,
+            player2User: undefined,
+            board: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        };
+    },
+    methods: {
+        pieceImageURL: function pieceImageURL(piece) {
+            var imgSrc = String(piece);
+            return 'img/' + imgSrc + '.png';
+        },
+        clickPiece: function clickPiece(index) {
+            if (this.board[index] || this.gameEnded) return;
+            this.board[index] = this.currentValue;
+            this.successMessage = this.currentPlayer + ' has Played';
+            this.showSuccess = true;
+            this.currentValue = this.currentValue == 1 ? 2 : 1;
+            this.checkGameEnded();
+        },
+        restartGame: function restartGame() {
+            console.log('restartGame');
+            this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+            this.showSuccess = false;
+            this.showFailure = false;
+            this.successMessage = '';
+            this.failMessage = '';
+            this.currentValue = 1;
+            this.gameEnded = false;
+        },
+        //------------------------------------------
+        //GAME LOGIC START
+        //-------------------------------------------
+        checkPiece: function checkPiece(piece1, piece2) {
+            if (piece1.src === piece2.src) {
+                piece1.index = null;
+                piece2.index = null;
+            } else {
+                //esconder as peças
+            }
+        },
+        checkGameEnded: function checkGameEnded() {
+            if (isEmpty(board)) {
+                gameEnded = true;
+                //comparar nº de pares de cada jogador
+            }
+        }
+
+    }
 });
 
 /***/ }),
@@ -45534,34 +45587,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0, false, false)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "gameseparator" }, [
-      _c("div", [
-        _c("h2", { staticClass: "text-center" }, [_vm._v("Hello")]),
-        _vm._v(" "),
-        _c("br")
-      ]),
+  return _c("div", [
+    _c("div", [
+      _c("h3", { staticClass: "text-center" }, [_vm._v(_vm._s(_vm.title))]),
       _vm._v(" "),
-      _c("div", { staticClass: "game-zone-content" }, [
-        _c("div", { staticClass: "board" }, [_c("div", [_c("img")])]),
-        _vm._v(" "),
-        _c("hr")
-      ])
+      _c("br"),
+      _vm._v(" "),
+      _c("h2", [_vm._v("Current Player : " + _vm._s(_vm.currentPlayer))]),
+      _vm._v(" "),
+      _c("br")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "game-zone-content" }, [
+      _vm.showSuccess
+        ? _c("div", { staticClass: "alert alert-success" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close-btn",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.showSuccess = false
+                  }
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("strong", [
+              _vm._v(_vm._s(_vm.successMessage) + "     "),
+              _c(
+                "a",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.gameEnded,
+                      expression: "gameEnded"
+                    }
+                  ],
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.restartGame($event)
+                    }
+                  }
+                },
+                [_vm._v("Restart")]
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "board" },
+        _vm._l(_vm.board, function(piece, key) {
+          return _c("div", [
+            _c("img", {
+              attrs: { src: _vm.pieceImageURL(piece) },
+              on: {
+                click: function($event) {
+                  _vm.clickPiece(key)
+                }
+              }
+            })
+          ])
+        })
+      ),
+      _vm._v(" "),
+      _c("hr")
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-7c293f89", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-ff6161fc", module.exports)
   }
 }
 
