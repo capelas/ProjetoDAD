@@ -993,21 +993,31 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
 //Vue.use(VueSocketio, 'http://192.168.10.10:8080');
 //Vue.use(VueSocketio, 'http://192.168.10.1:8080');
 
-var singleplayer_memorygame = Vue.component('singlegame', __webpack_require__(53));
+var singleplayer_memorygame = Vue.component('singlegame', __webpack_require__(39));
 
 var routes = [{ path: '/singlememorygame', component: singleplayer_memorygame }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
-  routes: routes
+	routes: routes
 });
 
+var pieces = [];
+for (var i = 0; i < 41; i++) {
+	pieces[i] = "img/" + i + ".png";
+}
+var shufflePieces = function shufflePieces() {
+	var pieces = [].concat(_.cloneDeep(pieces), _.cloneDeep(pieces));
+	return _.shuffle(pieces);
+};
+console.log(pieces);
 var app = new Vue({
-  router: router,
-  data: {
-    player1: undefined,
-    player2: undefined
+	router: router,
+	data: {
+		player1: undefined,
+		player2: undefined,
+		pieces: pieces
 
-  }
+	}
 }).$mount('#app');
 
 /***/ }),
@@ -45315,7 +45325,54 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 39 */,
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(40)
+/* script */
+var __vue_script__ = __webpack_require__(41)
+/* template */
+var __vue_template__ = __webpack_require__(42)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/singleplayer_memorygame.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-ff6161fc", Component.options)
+  } else {
+    hotAPI.reload("data-v-ff6161fc", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
 /* 40 */
 /***/ (function(module, exports) {
 
@@ -45425,72 +45482,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 41 */,
-/* 42 */,
-/* 43 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(40)
-/* script */
-var __vue_script__ = __webpack_require__(54)
-/* template */
-var __vue_template__ = __webpack_require__(55)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/assets/js/components/singleplayer_memorygame.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-ff6161fc", Component.options)
-  } else {
-    hotAPI.reload("data-v-ff6161fc", Component.options)
-' + '  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 54 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45528,59 +45520,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showFailure: false,
             successMessage: '',
             failMessage: '',
-            currentValue: 1,
             gameEnded: false,
-            player1User: undefined,
-            player2User: undefined,
-            board: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+            showSplash: false,
+            pieces: [],
+            started: false,
+            startTime: 0,
+            turns: 0,
+            flipBackTimer: null,
+            score: 0
         };
     },
-    methods: {
-        pieceImageURL: function pieceImageURL(piece) {
-            var imgSrc = String(piece);
-            return 'img/' + imgSrc + '.png';
-        },
-        clickPiece: function clickPiece(index) {
-            if (this.board[index] || this.gameEnded) return;
-            this.board[index] = this.currentValue;
-            this.successMessage = this.currentPlayer + ' has Played';
-            this.showSuccess = true;
-            this.currentValue = this.currentValue == 1 ? 2 : 1;
-            this.checkGameEnded();
-        },
-        restartGame: function restartGame() {
-            console.log('restartGame');
-            this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-            this.showSuccess = false;
-            this.showFailure = false;
-            this.successMessage = '';
-            this.failMessage = '';
-            this.currentValue = 1;
-            this.gameEnded = false;
-        },
-        //------------------------------------------
-        //GAME LOGIC START
-        //-------------------------------------------
-        checkPiece: function checkPiece(piece1, piece2) {
-            if (piece1.src === piece2.src) {
-                piece1.index = null;
-                piece2.index = null;
-            } else {
-                //esconder as peças
-            }
-        },
-        checkGameEnded: function checkGameEnded() {
-            if (isEmpty(board)) {
-                gameEnded = true;
-                //comparar nº de pares de cada jogador
-            }
-        }
-
-    }
+    methods: {}
 });
 
 /***/ }),
-/* 55 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -45671,6 +45625,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-ff6161fc", module.exports)
   }
 }
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

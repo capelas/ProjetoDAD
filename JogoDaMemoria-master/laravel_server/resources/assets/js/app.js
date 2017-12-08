@@ -6,11 +6,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+ require('./bootstrap');
 
-window.Vue = require('vue');
+ window.Vue = require('vue');
 
-import VueRouter from 'vue-router';
+ import VueRouter from 'vue-router';
 //import VueSocketio from 'vue-socket.io';
 
 Vue.use(VueRouter);
@@ -21,18 +21,29 @@ Vue.use(VueRouter);
 const singleplayer_memorygame = Vue.component('singlegame',require('./components/singleplayer_memorygame.vue'));
 
 const routes = [
-  { path: '/singlememorygame', component: singleplayer_memorygame }
+{ path: '/singlememorygame', component: singleplayer_memorygame }
 ];
 
 const router = new VueRouter({
-  routes:routes
+	routes:routes
 });
 
+
+let pieces = [];
+for (var i = 0; i < 41; i++) {
+	pieces[i] = "img/"+i+".png";
+}
+let shufflePieces = () => {
+	let pieces = [].concat(_.cloneDeep(pieces), _.cloneDeep(pieces));
+	return _.shuffle(pieces);
+};
+console.log(pieces);
 const app = new Vue({
-  router,
-  data:{
-    player1:undefined,
-    player2: undefined,
-    
-  }
+	router,
+	data:{
+		player1:undefined,
+		player2: undefined,
+		pieces: pieces,
+
+	},
 }).$mount('#app');
