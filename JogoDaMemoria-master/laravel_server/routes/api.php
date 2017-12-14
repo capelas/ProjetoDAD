@@ -12,6 +12,16 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//users
+
+Route::get('users', 'UserControllerAPI@getUsers');
+Route::get('users/emailavailable', 'UserControllerAPI@emailAvailable');
+Route::get('users/{id}', 'UserControllerAPI@getUser');
+Route::post('users', 'UserControllerAPI@store');
+Route::put('users/{id}', 'UserControllerAPI@update');
+Route::delete('users/{id}', 'UserControllerAPI@delete');
+
+
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
         return $request->user();
@@ -28,3 +38,4 @@ Route::get('teste', function () {
 Route::middleware('auth:api')->get('teste', function () {
  return response()->json(['msg'=>'Só um teste'], 200);
 });
+
