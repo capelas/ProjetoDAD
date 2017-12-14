@@ -18,10 +18,17 @@ Vue.use(VueRouter);
 //Vue.use(VueSocketio, 'http://192.168.10.10:8080');
 //Vue.use(VueSocketio, 'http://192.168.10.1:8080');
 
+
+//users
+const user = Vue.component('user', require('./components/user.vue'));
+
+//game
 const singleplayer_memorygame = Vue.component('singlegame',require('./components/singleplayer_memorygame.vue'));
 
 const routes = [
-{ path: '/singlememorygame', component: singleplayer_memorygame }
+	{ path: '/', redirect: '/users'},
+	{ path: '/users', component: user},
+	{ path: '/singlememorygame', component: singleplayer_memorygame }
 ];
 
 const router = new VueRouter({
@@ -38,6 +45,7 @@ let shufflePieces = () => {
 	return _.shuffle(pieces);
 };
 console.log(pieces);
+
 const app = new Vue({
 	router,
 	data:{

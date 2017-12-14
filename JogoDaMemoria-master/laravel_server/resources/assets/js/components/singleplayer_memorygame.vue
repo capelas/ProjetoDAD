@@ -24,7 +24,7 @@
 
 <script type="text/javascript">
 export default { 
-    props[pieces],
+    props: [pieces],
     data: function () {
         return{
             title: 'Memory Game',
