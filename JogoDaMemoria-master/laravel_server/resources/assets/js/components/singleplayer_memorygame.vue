@@ -24,7 +24,7 @@
 
 <script type="text/javascript">
 export default { 
-    props[pieces],
+    props: ['pieces'],
     data: function () {
         return{
             title: 'Memory Game',
@@ -42,8 +42,7 @@ export default {
             score: 0,
       }
   },
-  methods: {
-    
+  methods: { 
   }
 }
 </script>
