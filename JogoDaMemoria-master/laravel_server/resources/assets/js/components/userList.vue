@@ -9,6 +9,7 @@
 	        </tr>
 	    </thead>
 	    <tbody>
+
 	        <tr v-for="user in users"  :key="user.id" :class="{activerow: editingUser === user}">
 	            <td>{{ user.name }}</td>
 	            <td>{{ user.email }}</td>
@@ -24,10 +25,12 @@
 
 <script type="text/javascript">
 	// Component code (not registered)
+    // 
 	module.exports={
 		props: ['users'],
 		data: function(){
 			return { 
+
 				editingUser: null
 			}
 		},
@@ -39,7 +42,7 @@
             deleteUser: function(user){
                 this.editingUser = null;
                 this.$emit('delete-click', user);
-			},
+			}
         },		
 	}
 </script>

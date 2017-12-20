@@ -11,13 +11,13 @@
 			<button type="button" class="close-btn" v-on:click="showSuccess=false">&times;</button>
 			<strong>{{ successMessage }}</strong>
 		</div>
-		<!-- <user-edit :user="currentUser" :departments="departments"  @user-saved="savedUser" @user-canceled="cancelEdit" v-if="currentUser"></user-edit>	 -->			
+		 <user-edit :user="currentUser" :departments="departments"  @user-saved="savedUser" @user-canceled="cancelEdit" v-if="currentUser"></user-edit>	 			
 	</div>				
 </template>
 
 <script type="text/javascript">
 	import UserList from './userList.vue';
-	//import UserEdit from './userEdit.vue';
+	import UserEdit from './userEdit.vue';
 	
 	export default {
 		data: function(){
@@ -64,19 +64,11 @@
 	    },
 	    components: {
 	    	'user-list': UserList,
-	    	//'user-edit': UserEdit
+	    	'user-edit': UserEdit
 	    },
 	    mounted() {
-			this.getUsers();
-			if (this.$root.departments.length === 0) {
-				axios.get('api/departments')
-  					.then(response=>{
-  						this.$root.departments = response.data.data; 
-  						this.departments = this.$root.departments;
-  					})
-  			} else {
-  				this.departments = this.$root.departments;
-  			}
+	    	this.getUsers();
+			
 		}
 
 	}

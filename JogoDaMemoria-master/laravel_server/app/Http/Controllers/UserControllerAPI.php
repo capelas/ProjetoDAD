@@ -28,6 +28,8 @@ class UserControllerAPI extends Controller
         return new UserResource(User::find($id));
     }
 
+    
+
     public function store(Request $request)
     {
         $request->validate([
@@ -71,5 +73,16 @@ class UserControllerAPI extends Controller
             $totalEmail = DB::table('users')->where('email', '=', $request->email)->count();
         }
         return response()->json($totalEmail == 0);
+    }
+
+    public function nickNameAvailable(Request $request)
+    {
+        $totalNickname = 1;
+        if ($request->has('nickname') && $request->has('id')) {
+            $totalNickname = DB::table('users')->where('nickname', '=', $request->nickname)->where('id', '<>', $request->id)->count();
+        } else if ($request->has('nickname')) {
+            $totalNickname = DB::table('users')->where('nickname', '=', $request->nickname)->count();
+        }
+        return response()->json($totalNickname == 0);
     }
 }

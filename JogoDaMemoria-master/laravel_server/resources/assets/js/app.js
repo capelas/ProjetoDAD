@@ -6,12 +6,14 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
- require('./bootstrap');
+
+
+ require('./bootstrap.js');
 
  window.Vue = require('vue');
 
  import VueRouter from 'vue-router';
-//import VueSocketio from 'vue-socket.io';
+// import VueSocketio from 'vue-socket.io';
 
 Vue.use(VueRouter);
 
@@ -36,7 +38,7 @@ const router = new VueRouter({
 });
 
 
-let pieces = [];
+/*let pieces = [];
 for (var i = 0; i < 41; i++) {
 	pieces[i] = "img/"+i+".png";
 }
@@ -45,13 +47,13 @@ let shufflePieces = () => {
 	return _.shuffle(pieces);
 };
 console.log(pieces);
-
+*/
 const app = new Vue({
 	router,
 	data:{
 		player1:undefined,
 		player2: undefined,
-		pieces: pieces,
+		//pieces: pieces,
 
-	},
+	}
 }).$mount('#app');

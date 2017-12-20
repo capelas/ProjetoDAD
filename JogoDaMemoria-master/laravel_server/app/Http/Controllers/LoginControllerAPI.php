@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-define('YOUR_SERVER_URL', 'http://memorygame.dev');
+define('YOUR_SERVER_URL', 'http://memorygame.dad');
 // Check "oauth_clients" table for next 2 values:
 define('CLIENT_ID', '2');
-define('CLIENT_SECRET','HZv1SXhqSpByaUjgMcPZ5kS8XxpAilTUMaiDW4q4');
+define('CLIENT_SECRET','9c56lDWNcpXdB5fdcyWrnQQNFmJIAOYmar4V6I6d');
 
 class LoginControllerAPI extends Controller
 {    

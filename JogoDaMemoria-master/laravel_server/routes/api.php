@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 Route::get('users', 'UserControllerAPI@getUsers');
 Route::get('users/emailavailable', 'UserControllerAPI@emailAvailable');
 Route::get('users/{id}', 'UserControllerAPI@getUser');
-Route::post('users', 'UserControllerAPI@store');
+Route::post('user/store', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
 Route::delete('users/{id}', 'UserControllerAPI@delete');
 
