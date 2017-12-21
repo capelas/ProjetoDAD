@@ -11,7 +11,7 @@
 			<button type="button" class="close-btn" v-on:click="showSuccess=false">&times;</button>
 			<strong>{{ successMessage }}</strong>
 		</div>
-		<image-list :image="currentImage"  @imaged-saved="savedImage" @image-canceled:"cancelEdit" v-if="currentImage"></image-list>	
+		<image-edit :image="currentImage"  @imaged-saved="savedImage" @image-canceled="cancelEdit" v-if="currentImage"></image-edit>	
 
 		
 	</div>
@@ -29,7 +29,7 @@ export default {
 			title: 'List Images',
 			showSuccess: false,
 			successMessage: '',
-			currentUser: null,
+			currentImage: null,
 			image: []
 		}
 	},
@@ -41,40 +41,40 @@ export default {
 			});
 		},
 		editImage: function(image){
-	            this.currentImage = image;
-	            this.showSuccess = false;
-	        },
-	        deleteImage: function(image){
-	        	
-	            axios.delete('api/image/'+image.id)
-	                .then(response => {
-	                	
-	                    this.showSuccess = true;
-	                    this.successMessage = 'Image Deleted';
-	                    this.getAllimage();
-	                });
-	        },
-	        savedImage: function(){
-	            this.currentImage = null;
-	            this.$refs.imageListRef.editingImage = null;
-	            this.showSuccess = true;
-	            this.successMessage = 'image Saved';
-	        },
-	        cancelEdit: function(){
-	            this.currentImage = null;
-	            this.$refs.imageListRef.editingImage = null;
-	            this.showSuccess = false;
-	        },
-	        childMessage: function(message){
+			this.currentImage = image;
+			this.showSuccess = false;
+		},
+		deleteImage: function(image){
+
+			axios.delete('api/image/'+image.id)
+			.then(response => {
+
 				this.showSuccess = true;
-	            this.successMessage = message;
-			}
+				this.successMessage = 'Image Deleted';
+				this.getAllimage();
+			});
+		},
+		savedImage: function(){
+			this.currentImage = null;
+			this.$refs.imageListRef.editingImage = null;
+			this.showSuccess = true;
+			this.successMessage = 'Image Saved';
+		},
+		cancelEdit: function(){
+			this.currentImage = null;
+			this.$refs.imageListRef.editingImage = null;
+			this.showSuccess = false;
+		},
+		childMessage: function(message){
+			this.showSuccess = true;
+			this.successMessage = message;
+		}
 
 
 	},
 	components: {
 		'image-list': imageList,
-		'image-edit': imageEdit,
+		'image-edit': imageEdit
 
 	},
 	mounted() {

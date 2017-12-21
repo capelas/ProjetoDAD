@@ -1375,7 +1375,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(71);
+module.exports = __webpack_require__(76);
 
 
 /***/ }),
@@ -46859,7 +46859,7 @@ var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(75)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46946,7 +46946,7 @@ exports.push([module.i, "\np[data-v-86cf71d8] {\r\n\tfont-size: 2em;\r\n\ttext-a
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__imageList_vue__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__imageList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__imageList_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageEdit_vue__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageEdit_vue__ = __webpack_require__(70);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageEdit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__imageEdit_vue__);
 //
 //
@@ -46979,7 +46979,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			title: 'List Images',
 			showSuccess: false,
 			successMessage: '',
-			currentUser: null,
+			currentImage: null,
 			image: []
 		};
 	},
@@ -47009,7 +47009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.currentImage = null;
 			this.$refs.imageListRef.editingImage = null;
 			this.showSuccess = true;
-			this.successMessage = 'image Saved';
+			this.successMessage = 'Image Saved';
 		},
 		cancelEdit: function cancelEdit() {
 			this.currentImage = null;
@@ -47119,7 +47119,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\ntr.activerow[data-v-14693ed2] {\n        background: #123456  !important;\n        color: #fff          !important;\n}\n\n", ""]);
+exports.push([module.i, "\ntr.activerow[data-v-14693ed2] {\n    background: #123456  !important;\n    color: #fff          !important;\n}\n\n", ""]);
 
 // exports
 
@@ -47159,14 +47159,18 @@ exports.push([module.i, "\ntr.activerow[data-v-14693ed2] {\n        background: 
 module.exports = {
     props: ['image'],
     data: function data() {
-        return {};
+        return {
+            editingImage: null
+
+        };
     },
     methods: {
         ImageURL: function ImageURL(imag) {
             var imgSrc = String(imag);
             return 'img/' + imgSrc;
         },
-        editImage: function editImage(Image) {
+        editImage: function editImage(image) {
+
             this.editingImage = image;
             this.$emit('edit-click', image);
         },
@@ -47271,90 +47275,16 @@ if (false) {
 /* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "jumbotron" }, [
-        _c("h1", [_vm._v(_vm._s(_vm.title))])
-      ]),
-      _vm._v(" "),
-      _c("image-list", {
-        ref: "imageListRef",
-        attrs: { image: _vm.image },
-        on: {
-          "edit-click": _vm.editImage,
-          "delete-click": _vm.deleteImage,
-          message: _vm.childMessage
-        }
-      }),
-      _vm._v(" "),
-      _vm.showSuccess
-        ? _c("div", { staticClass: "alert alert-success" }, [
-            _c(
-              "button",
-              {
-                staticClass: "close-btn",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    _vm.showSuccess = false
-                  }
-                }
-              },
-              [_vm._v("×")]
-            ),
-            _vm._v(" "),
-            _c("strong", [_vm._v(_vm._s(_vm.successMessage))])
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._v('"cancelEdit" v-if="currentImage">')
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-86cf71d8", module.exports)
-  }
-}
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */,
-/* 76 */,
-/* 77 */,
-/* 78 */,
-/* 79 */,
-/* 80 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(81)
+  __webpack_require__(71)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(83)
+var __vue_script__ = __webpack_require__(73)
 /* template */
-var __vue_template__ = __webpack_require__(84)
+var __vue_template__ = __webpack_require__(74)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47394,13 +47324,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 81 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(82);
+var content = __webpack_require__(72);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -47420,7 +47350,7 @@ if(false) {
 }
 
 /***/ }),
-/* 82 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -47428,13 +47358,13 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 83 */
+/* 73 */
 /***/ (function(module, exports) {
 
 //
@@ -47457,37 +47387,59 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 module.exports = {
-    props: ['user'],
+    props: ['image'],
     methods: {
         saveUser: function saveUser() {
             var _this = this;
 
-            axios.put('api/users/' + this.user.id, this.user).then(function (response) {
+            console.log(this.image.id);
+            axios.put('api/image/' + this.image.id, this.image).then(function (response) {
                 // Copy object properties from response.data.data to this.user
                 // without creating a new reference
                 // 
-                Object.assign(_this.user, response.data.data);
-                _this.$emit('user-saved', _this.user);
+                Object.assign(_this.image, response.data.data);
+                _this.$emit('image-saved', _this.image);
             });
         },
         cancelEdit: function cancelEdit() {
             var _this2 = this;
 
-            axios.get('api/users/' + this.user.id).then(function (response) {
-                // Copy object properties from response.data.data to this.user
+            axios.get('api/image/' + this.image.id).then(function (response) {
+                // Copy object properties from response.data.data to this.image
                 // without creating a new reference
-                Object.assign(_this2.user, response.data.data);
-                _this2.$emit('user-canceled', _this2.user);
+                Object.assign(_this2.image, response.data.data);
+                _this2.$emit('image-canceled', _this2.image);
             });
+        },
+        ImageURL: function ImageURL(imag) {
+            var imgSrc = String(imag);
+            return 'img/' + imgSrc;
         }
     },
     mounted: function mounted() {}
 };
 
 /***/ }),
-/* 84 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47498,34 +47450,95 @@ var render = function() {
     _c("h2", [_vm._v("Edit Image")]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "inputAtive" } }, [_vm._v("NickName")]),
+      _c("div", [
+        _c("h3", [_vm._v(" Editar Peça com o id:" + _vm._s(_vm.image.id))]),
+        _vm._v(" "),
+        _c("th", [_c("img", { attrs: { src: _vm.ImageURL(_vm.image.path) } })])
+      ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "inputFace" } }, [_vm._v("Face")]),
+        _vm._v(" "),
+        _c(
+          "select",
           {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.user.nickname,
-            expression: "user.nickname"
-          }
-        ],
-        staticClass: "form-control",
-        attrs: {
-          type: "text",
-          name: "nickname",
-          id: "inputNickname",
-          placeholder: "nickname"
-        },
-        domProps: { value: _vm.user.nickname },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.image.face,
+                expression: "image.face"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "inputFace", name: "face" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.image,
+                  "face",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
             }
-            _vm.$set(_vm.user, "nickname", $event.target.value)
-          }
-        }
-      })
+          },
+          [
+            _c("option", { attrs: { value: "tile" } }, [_vm._v("Tile")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "hidden" } }, [_vm._v(" Hidden ")])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-group" }, [
+        _c("label", { attrs: { for: "inputActive" } }, [_vm._v("Active")]),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.image.active,
+                expression: "image.active"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "inputActive", name: "active" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.$set(
+                  _vm.image,
+                  "active",
+                  $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                )
+              }
+            }
+          },
+          [
+            _c("option", { domProps: { value: 1 } }, [_vm._v(" Active")]),
+            _vm._v(" "),
+            _c("option", { domProps: { value: 0 } }, [_vm._v("Not active ")])
+          ]
+        )
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-group" }, [
@@ -47568,6 +47581,80 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-23b1663e", module.exports)
   }
 }
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "jumbotron" }, [
+        _c("h1", [_vm._v(_vm._s(_vm.title))])
+      ]),
+      _vm._v(" "),
+      _c("image-list", {
+        ref: "imageListRef",
+        attrs: { image: _vm.image },
+        on: {
+          "edit-click": _vm.editImage,
+          "delete-click": _vm.deleteImage,
+          message: _vm.childMessage
+        }
+      }),
+      _vm._v(" "),
+      _vm.showSuccess
+        ? _c("div", { staticClass: "alert alert-success" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close-btn",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.showSuccess = false
+                  }
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("strong", [_vm._v(_vm._s(_vm.successMessage))])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentImage
+        ? _c("image-edit", {
+            attrs: { image: _vm.currentImage },
+            on: {
+              "imaged-saved": _vm.savedImage,
+              "image-canceled": _vm.cancelEdit
+            }
+          })
+        : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-86cf71d8", module.exports)
+  }
+}
+
+/***/ }),
+/* 76 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

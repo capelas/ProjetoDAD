@@ -21,7 +21,7 @@ class ImageControllerAPI extends Controller
     {
         return new ImageResource(Image::find($id));
     }
-    /*
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -31,23 +31,25 @@ class ImageControllerAPI extends Controller
                 
             ]);
         $imagem = new Image();
-        $Image->fill($request->all());
+        $imagem->fill($request->all());
        
-        $Image->save();
-        return response()->json(new ImageResource($Image), 201);
+        $imagem->save();
+        return response()->json(new ImageResource($imagem), 201);
     }
 
     public function update(Request $request, $id)
     {
+        
         $request->validate([
-               'face' => 'required | regex:(tile,hidden)',
-                'active' => 'number | max: ',
-                'path' => 'required',
+               'face' => 'required',
+                'active' => 'required',
+                
             ]);
         $image = Image::findOrFail($id);
+        
         $image->update($request->all());
         return new ImageResource($image);
-    }*/
+    }
 
     public function delete($id)
     {

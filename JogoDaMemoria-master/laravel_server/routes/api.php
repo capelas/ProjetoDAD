@@ -25,6 +25,7 @@ Route::delete('users/{id}', 'UserControllerAPI@delete');
 Route::get('image', 'ImageControllerAPI@getAllImage');
 Route::get('image/{id}', 'ImageControllerAPI@getImage');
 Route::delete('image/{id}', 'ImageControllerAPI@delete');
+Route::put('image/{id}', 'ImageControllerAPI@update');
 
 
 
