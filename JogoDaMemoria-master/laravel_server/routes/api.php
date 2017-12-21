@@ -23,6 +23,8 @@ Route::delete('users/{id}', 'UserControllerAPI@delete');
 
 //Piece
 Route::get('image', 'ImageControllerAPI@getAllImage');
+Route::get('image/{id}', 'ImageControllerAPI@getImage');
+Route::delete('image/{id}', 'ImageControllerAPI@delete');
 
 
 

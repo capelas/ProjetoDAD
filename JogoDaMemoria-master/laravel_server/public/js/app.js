@@ -46596,12 +46596,6 @@ module.exports = Component.exports
 
 
 /***/ }),
-<<<<<<< HEAD
-/* 41 */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed: SyntaxError: Unexpected token, expected , (27:9)\n\n\u001b[0m \u001b[90m 25 | \u001b[39m\n \u001b[90m 26 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mdefault\u001b[39m { \n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 | \u001b[39m    props[pieces]\u001b[33m,\u001b[39m\n \u001b[90m    | \u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 | \u001b[39m    data\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m () {\n \u001b[90m 29 | \u001b[39m        \u001b[36mreturn\u001b[39m{\n \u001b[90m 30 | \u001b[39m            title\u001b[33m:\u001b[39m \u001b[32m'Memory Game'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n");
-=======
 /* 59 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46653,7 +46647,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     methods: {}
 });
->>>>>>> master
 
 /***/ }),
 /* 60 */
@@ -46848,6 +46841,8 @@ exports.push([module.i, "\np[data-v-86cf71d8] {\r\n\tfont-size: 2em;\r\n\ttext-a
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__imageList_vue__ = __webpack_require__(65);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__imageList_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__imageList_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageEdit_vue__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__imageEdit_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__imageEdit_vue__);
 //
 //
 //
@@ -46862,6 +46857,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -46882,11 +46885,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			axios.get('api/image').then(function (response) {
 				_this.image = response.data.data;
 			});
+		},
+		editImage: function editImage(image) {
+			this.currentImage = image;
+			this.showSuccess = false;
+		},
+		deleteImage: function deleteImage(image) {
+			var _this2 = this;
+
+			axios.delete('api/image/' + image.id).then(function (response) {
+
+				_this2.showSuccess = true;
+				_this2.successMessage = 'Image Deleted';
+				_this2.getAllimage();
+			});
+		},
+		savedImage: function savedImage() {
+			this.currentImage = null;
+			this.$refs.imageListRef.editingImage = null;
+			this.showSuccess = true;
+			this.successMessage = 'image Saved';
+		},
+		cancelEdit: function cancelEdit() {
+			this.currentImage = null;
+			this.$refs.imageListRef.editingImage = null;
+			this.showSuccess = false;
+		},
+		childMessage: function childMessage(message) {
+			this.showSuccess = true;
+			this.successMessage = message;
 		}
 
 	},
 	components: {
-		'image-list': __WEBPACK_IMPORTED_MODULE_0__imageList_vue___default.a
+		'image-list': __WEBPACK_IMPORTED_MODULE_0__imageList_vue___default.a,
+		'image-edit': __WEBPACK_IMPORTED_MODULE_1__imageEdit_vue___default.a
 
 	},
 	mounted: function mounted() {
@@ -47013,6 +47046,8 @@ exports.push([module.i, "\ntr.activerow[data-v-14693ed2] {\n        background: 
 //
 //
 //
+//
+//
 
 // Component code (not registered)
 // 
@@ -47025,11 +47060,21 @@ module.exports = {
         ImageURL: function ImageURL(imag) {
             var imgSrc = String(imag);
             return 'img/' + imgSrc;
+        },
+        editImage: function editImage(Image) {
+            this.editingImage = image;
+            this.$emit('edit-click', image);
+        },
+        deleteImage: function deleteImage(image) {
+
+            this.editingImage = null;
+            this.$emit('delete-click', image);
         }
 
     },
     mounted: function mounted() {
-        console.log(this.image);
+        //console.log(this.image);
+
     }
 };
 
@@ -47054,7 +47099,37 @@ var render = function() {
           _vm._v(" "),
           _c("td", [_vm._v(_vm._s(imag.active))]),
           _vm._v(" "),
-          _c("th", [_c("img", { attrs: { src: _vm.ImageURL(imag.path) } })])
+          _c("th", [_c("img", { attrs: { src: _vm.ImageURL(imag.path) } })]),
+          _vm._v(" "),
+          _c("td", [
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-xs btn-primary",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.editImage(imag)
+                  }
+                }
+              },
+              [_vm._v("Edit")]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-xs btn-danger",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    _vm.deleteImage(imag)
+                  }
+                }
+              },
+              [_vm._v("Delete")]
+            )
+          ])
         ])
       })
     )
@@ -47071,7 +47146,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("face")]),
         _vm._v(" "),
-        _c("th", [_vm._v("active")])
+        _c("th", [_vm._v("active")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Action")])
       ])
     ])
   }
@@ -47100,7 +47177,37 @@ var render = function() {
         _c("h1", [_vm._v(_vm._s(_vm.title))])
       ]),
       _vm._v(" "),
-      _c("image-list", { ref: "imageListRef", attrs: { image: _vm.image } })
+      _c("image-list", {
+        ref: "imageListRef",
+        attrs: { image: _vm.image },
+        on: {
+          "edit-click": _vm.editImage,
+          "delete-click": _vm.deleteImage,
+          message: _vm.childMessage
+        }
+      }),
+      _vm._v(" "),
+      _vm.showSuccess
+        ? _c("div", { staticClass: "alert alert-success" }, [
+            _c(
+              "button",
+              {
+                staticClass: "close-btn",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    _vm.showSuccess = false
+                  }
+                }
+              },
+              [_vm._v("×")]
+            ),
+            _vm._v(" "),
+            _c("strong", [_vm._v(_vm._s(_vm.successMessage))])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._v('"cancelEdit" v-if="currentImage">')
     ],
     1
   )
@@ -47120,6 +47227,242 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(81)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(83)
+/* template */
+var __vue_template__ = __webpack_require__(84)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-23b1663e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\imageEdit.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-23b1663e", Component.options)
+  } else {
+    hotAPI.reload("data-v-23b1663e", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(82);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("46dbe7b8", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-23b1663e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./imageEdit.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-23b1663e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./imageEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports) {
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+module.exports = {
+    props: ['user'],
+    methods: {
+        saveUser: function saveUser() {
+            var _this = this;
+
+            axios.put('api/users/' + this.user.id, this.user).then(function (response) {
+                // Copy object properties from response.data.data to this.user
+                // without creating a new reference
+                // 
+                Object.assign(_this.user, response.data.data);
+                _this.$emit('user-saved', _this.user);
+            });
+        },
+        cancelEdit: function cancelEdit() {
+            var _this2 = this;
+
+            axios.get('api/users/' + this.user.id).then(function (response) {
+                // Copy object properties from response.data.data to this.user
+                // without creating a new reference
+                Object.assign(_this2.user, response.data.data);
+                _this2.$emit('user-canceled', _this2.user);
+            });
+        }
+    },
+    mounted: function mounted() {}
+};
+
+/***/ }),
+/* 84 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "jumbotron" }, [
+    _c("h2", [_vm._v("Edit Image")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "inputAtive" } }, [_vm._v("NickName")]),
+      _vm._v(" "),
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.user.nickname,
+            expression: "user.nickname"
+          }
+        ],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "nickname",
+          id: "inputNickname",
+          placeholder: "nickname"
+        },
+        domProps: { value: _vm.user.nickname },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.user, "nickname", $event.target.value)
+          }
+        }
+      })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-group" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-default",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.saveUser()
+            }
+          }
+        },
+        [_vm._v("Save")]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-default",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              _vm.cancelEdit()
+            }
+          }
+        },
+        [_vm._v("Cancel")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-23b1663e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
