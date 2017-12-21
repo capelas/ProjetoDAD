@@ -13,8 +13,8 @@
             </div>
 
             <div class="board">
-                <div v-for="(piece, key) of board" >
-                    <img v-bind:src="pieceImageURL(piece)" v-on:click="clickPiece(key)">
+                <div v-for="img in images">
+                    <img v-bind:src="pieceImageURL()" v-on:click="clickPiece(key)">
                 </div>
             </div>
             <hr>
@@ -24,7 +24,6 @@
 
 <script type="text/javascript">
 export default { 
-    props: ['pieces'],
     data: function () {
         return{
             title: 'Memory Game',
@@ -39,13 +38,32 @@ export default {
             turns: 0,
             flipBackTimer: null,
             score: 0,
-            board:[0,0,0,0,0,0,0]
+            board:[],
+            images: [],
+            currentValue: 1
         }
     },
     methods: {
-        pieceImageURL: function (piece) {
-            var imgSrc = String(piece);
-            return 'img/' + imgSrc + '.png';
+        pieceImageURL: function () {
+
+        },
+        shuffleImages: function (images) {
+            var currentIndex = array.length, temporaryValue, randomIndex;
+            
+              // While there remain elements to shuffle...
+              while (0 !== currentIndex) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex -= 1;
+
+                // And swap it with the current element.
+                temporaryValue = array[currentIndex];
+                array[currentIndex] = array[randomIndex];
+                array[randomIndex] = temporaryValue;
+            }
+            
+            return array;  
         },
         clickPiece: function(index) {
             if(this.board[index] || this.gameEnded) return;
@@ -66,8 +84,6 @@ export default {
             this.gameEnded= false;
         },
         playerName: function(playerNumber){
-            console.log(playerNumber);
-            console.log(this.player1User);
             if(this.player1User != undefined && playerNumber == 1){
                 return this.player1User.name;                
             }
@@ -85,11 +101,6 @@ export default {
         // ----------------------------------------------------------------------------------------
         // GAME LOGIC - START
         // --------------------------------------------------------------------------------------- 
-      /*  checkPieces: function (piece1,piece2){
-            if (piece1 === piece2) {
-
-            }
-        },*/
         checkGameEnded: function () {
             if (this.player1User.pairs>this.player2User && player1User.pairs>this.player3User.pairs && this.player1User>player4User.pairs) {
                 this.successMessage = this.playerName(1)+' won the Game';
@@ -147,6 +158,11 @@ export default {
         if (this.$root.$data.player4) {
             this.player4 = this.$root.$data.player4;
         }
+        axios.get('api/image')
+        .then(response=>{
+            console.log(response.data.data);
+            this.images = response.data.data;
+        })
     }
 }
 </script>

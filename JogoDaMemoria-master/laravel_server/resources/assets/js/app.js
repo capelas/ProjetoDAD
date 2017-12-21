@@ -42,23 +42,11 @@ const router = new VueRouter({
 	routes:routes
 });
 
-
-/*let pieces = [];
-for (var i = 0; i < 41; i++) {
-	pieces[i] = "img/"+i+".png";
-}
-let shufflePieces = () => {
-	let pieces = [].concat(_.cloneDeep(pieces), _.cloneDeep(pieces));
-	return _.shuffle(pieces);
-};
-console.log(pieces);
-*/
 const app = new Vue({
 	router,
 	data:{
 		player1:undefined,
 		player2: undefined,
-		pieces: []
-
+		images: []
 	}
 }).$mount('#app');
