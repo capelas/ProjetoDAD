@@ -1,21 +1,23 @@
 <template>
    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>face</th>
-                <th>active</th>
-                
-            </tr>
-        </thead>
-        <tbody>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>face</th>
+            <th>active</th>
+            <th>Action</th>
 
-            <tr v-for="imag in image">
-                <td>{{ imag.id }}</td>
-                <td>{{ imag.face }}</td>
-                <td>{{ imag.active}}</td>
-                <th><img v-bind:src="ImageURL(imag.path)" ></th>
-                
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr v-for="imag in image">
+            <td>{{ imag.id }}</td>
+            <td>{{ imag.face }}</td>
+            <td>{{ imag.active}}</td>
+            <th><img v-bind:src="ImageURL(imag.path)" ></th>
+            <td><a class="btn btn-xs btn-primary" v-on:click.prevent="editImage(imag)">Edit</a>
+                <a class="btn btn-xs btn-danger" v-on:click.prevent="deleteImage(imag)">Delete</a></td>
             </tr>
         </tbody>
     </table>
@@ -28,30 +30,41 @@
         props: ['image'],
         data: function(){
             return { 
+                editingImage : null
 
-                
             }
         },
         methods: {
             ImageURL: function (imag) {
                 var imgSrc = String(imag);
                 return 'img/' + imgSrc ;
+            },
+            editImage: function(image){
+                
+                this.editingImage = image;
+                this.$emit('edit-click', image);
+            },      
+            deleteImage: function(image){
+
+                this.editingImage = null;
+                this.$emit('delete-click', image);
+
             }
-           
+
         },
-          mounted() {
-            console.log(this.image);
+        mounted() {
+            //console.log(this.image);
             
         }
     }
-</script>
+    </script>
 
-<style scoped>
+    <style scoped>
     tr.activerow {
         background: #123456  !important;
         color: #fff          !important;
-}
+    }
 
-</style>
+    </style>
 
 
