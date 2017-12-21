@@ -58,7 +58,7 @@ const app = new Vue({
 	data:{
 		player1:undefined,
 		player2: undefined,
-		//pieces: pieces,
+		pieces: []
 
 	}
 }).$mount('#app');
