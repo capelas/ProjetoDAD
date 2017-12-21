@@ -21,6 +21,9 @@ Route::post('user/store', 'UserControllerAPI@store');
 Route::put('users/{id}', 'UserControllerAPI@update');
 Route::delete('users/{id}', 'UserControllerAPI@delete');
 
+//Piece
+Route::get('image', 'ImageControllerAPI@getAllImage');
+
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

@@ -5,7 +5,8 @@
 @section('content')
 	
     <router-link to="/users">Users </router-link> - 
-	<router-link to="/singlememorygame"> Game </router-link>
+	<router-link to="/singlememorygame"> Game </router-link> -
+    <router-link to="/image"> Image </router-link>
 	
     <router-view></router-view>
 

@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="inputNickname">NickName</label>
             <input
-                type="text" class="form-control" v-model="user.NickName"
+                type="text" class="form-control" v-model="user.nickname"
                 name="nickname" id="inputNickname"
                 placeholder="nickname"/>
         </div>
@@ -39,6 +39,7 @@
                     .then(response=>{
                         // Copy object properties from response.data.data to this.user
                         // without creating a new reference
+                        // 
                         Object.assign(this.user, response.data.data);
                         this.$emit('user-saved', this.user)
                     });
@@ -52,6 +53,9 @@
                         this.$emit('user-canceled', this.user);
                     });
             }
+        },
+        mounted() {
+            
         }
     }
 </script>
