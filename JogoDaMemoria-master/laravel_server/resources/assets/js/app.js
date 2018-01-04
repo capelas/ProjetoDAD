@@ -23,7 +23,7 @@ Vue.use(VueRouter);
 
 //users
 const user = Vue.component('user', require('./components/user.vue'));
-
+const login = Vue.component('login', require('./components/login.vue'));
 //game
 const singleplayer_memorygame = Vue.component('singlegame',require('./components/singleplayer_memorygame.vue'));
 
@@ -35,7 +35,8 @@ const routes = [
 	{ path: '/', redirect: '/users'},
 	{ path: '/users', component: user},
 	{ path: '/singlememorygame', component: singleplayer_memorygame },
-	{ path: '/image', component: imagem}
+	{ path: '/image', component: imagem},
+	{ path: '/login', component: login}
 ];
 
 const router = new VueRouter({

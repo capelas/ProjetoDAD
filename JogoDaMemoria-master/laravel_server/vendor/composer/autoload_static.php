@@ -4,129 +4,43 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
+class ComposerStaticInit30e7ffe1e81ae4c53f25e88f5e910943
 {
     public static $files = array (
-        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
+        '1d1b89d124cc9cb8219922c9d5569199' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
     );
 
-    public static $prefixLengthsPsr4 = array (
-        'p' => 
-        array (
-            'phpseclib\\' => 10,
-            'phpDocumentor\\Reflection\\' => 25,
-        ),
-        'Z' => 
-        array (
-            'Zend\\Diactoros\\' => 15,
-        ),
-        'X' => 
-        array (
-            'XdgBaseDir\\' => 11,
-        ),
-        'W' => 
-        array (
-            'Whoops\\' => 7,
-            'Webmozart\\Assert\\' => 17,
-        ),
-        'T' => 
-        array (
-            'TijsVerkoyen\\CssToInlineStyles\\' => 31,
-            'Tests\\' => 6,
-        ),
-        'S' => 
-        array (
-            'Symfony\\Polyfill\\Php70\\' => 23,
-            'Symfony\\Polyfill\\Mbstring\\' => 26,
-            'Symfony\\Component\\VarDumper\\' => 28,
-            'Symfony\\Component\\Translation\\' => 30,
-            'Symfony\\Component\\Routing\\' => 26,
-            'Symfony\\Component\\Process\\' => 26,
-            'Symfony\\Component\\HttpKernel\\' => 29,
-            'Symfony\\Component\\HttpFoundation\\' => 33,
-            'Symfony\\Component\\Finder\\' => 25,
-            'Symfony\\Component\\EventDispatcher\\' => 34,
-            'Symfony\\Component\\Debug\\' => 24,
-            'Symfony\\Component\\CssSelector\\' => 30,
-            'Symfony\\Component\\Console\\' => 26,
-            'Symfony\\Bridge\\PsrHttpMessage\\' => 30,
-        ),
-        'R' => 
-        array (
-            'Ramsey\\Uuid\\' => 12,
-        ),
-        'P' => 
-        array (
-            'Psy\\' => 4,
-            'Psr\\SimpleCache\\' => 16,
-            'Psr\\Log\\' => 8,
-            'Psr\\Http\\Message\\' => 17,
-            'Psr\\Container\\' => 14,
-            'PhpParser\\' => 10,
-        ),
-        'M' => 
-        array (
-            'Monolog\\' => 8,
-        ),
-        'L' => 
-        array (
-            'League\\OAuth2\\Server\\' => 21,
-            'League\\Flysystem\\' => 17,
-            'League\\Event\\' => 13,
-            'Lcobucci\\JWT\\' => 13,
-            'Laravel\\Tinker\\' => 15,
-            'Laravel\\Passport\\' => 17,
-        ),
-        'I' => 
-        array (
-            'Illuminate\\' => 11,
-        ),
-        'G' => 
-        array (
-            'GuzzleHttp\\Psr7\\' => 16,
-            'GuzzleHttp\\Promise\\' => 19,
-            'GuzzleHttp\\' => 11,
-        ),
-        'F' => 
-        array (
-            'Firebase\\JWT\\' => 13,
-            'Fideloper\\Proxy\\' => 16,
-            'Faker\\' => 6,
-        ),
-        'E' => 
-        array (
-            'Egulias\\EmailValidator\\' => 23,
-        ),
-        'D' => 
-        array (
-            'Dotenv\\' => 7,
-            'Doctrine\\Instantiator\\' => 22,
-            'Doctrine\\Common\\Inflector\\' => 26,
-            'Defuse\\Crypto\\' => 14,
-            'DeepCopy\\' => 9,
-        ),
-        'C' => 
-        array (
-            'Cron\\' => 5,
-            'Carbon\\' => 7,
-        ),
-        'A' => 
-        array (
-            'App\\' => 4,
-        ),
+    public static $firstCharsPsr4 = array (
+        'p' => true,
+        'Z' => true,
+        'X' => true,
+        'W' => true,
+        'T' => true,
+        'S' => true,
+        'R' => true,
+        'P' => true,
+        'M' => true,
+        'L' => true,
+        'I' => true,
+        'G' => true,
+        'F' => true,
+        'E' => true,
+        'D' => true,
+        'C' => true,
+        'A' => true,
     );
 
     public static $prefixDirsPsr4 = array (
@@ -137,8 +51,8 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -390,7 +304,10 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\GameControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/GameControllerAPI.php',
+        'App\\Http\\Controllers\\ImageControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/ImageControllerAPI.php',
         'App\\Http\\Controllers\\LoginControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginControllerAPI.php',
+        'App\\Http\\Controllers\\UserControllerAPI' => __DIR__ . '/../..' . '/app/Http/Controllers/UserControllerAPI.php',
         'App\\Http\\Controllers\\VueController' => __DIR__ . '/../..' . '/app/Http/Controllers/VueController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
@@ -398,6 +315,14 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Requests\\StoreImageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreImageRequest.php',
+        'App\\Http\\Requests\\StoreUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/StoreUserRequest.php',
+        'App\\Http\\Requests\\UpdateImageRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateImageRequest.php',
+        'App\\Http\\Requests\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUserRequest.php',
+        'App\\Http\\Resources\\Game' => __DIR__ . '/../..' . '/app/Http/Resources/Game.php',
+        'App\\Http\\Resources\\ImageResource' => __DIR__ . '/../..' . '/app/Http/Resources/ImageResource.php',
+        'App\\Http\\Resources\\User' => __DIR__ . '/../..' . '/app/Http/Resources/User.php',
+        'App\\Image' => __DIR__ . '/../..' . '/app/Image.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -1435,6 +1360,7 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'Illuminate\\Events\\CallQueuedListener' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/CallQueuedListener.php',
         'Illuminate\\Events\\Dispatcher' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/Dispatcher.php',
         'Illuminate\\Events\\EventServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/EventServiceProvider.php',
+        'Illuminate\\Filesystem\\Cache' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/Cache.php',
         'Illuminate\\Filesystem\\Filesystem' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/Filesystem.php',
         'Illuminate\\Filesystem\\FilesystemAdapter' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/FilesystemAdapter.php',
         'Illuminate\\Filesystem\\FilesystemManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Filesystem/FilesystemManager.php',
@@ -1546,6 +1472,7 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'Illuminate\\Foundation\\Testing\\RefreshDatabaseState' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/RefreshDatabaseState.php',
         'Illuminate\\Foundation\\Testing\\TestCase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/TestCase.php',
         'Illuminate\\Foundation\\Testing\\TestResponse' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/TestResponse.php',
+        'Illuminate\\Foundation\\Testing\\WithFaker' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/WithFaker.php',
         'Illuminate\\Foundation\\Testing\\WithoutEvents' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/WithoutEvents.php',
         'Illuminate\\Foundation\\Testing\\WithoutMiddleware' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/WithoutMiddleware.php',
         'Illuminate\\Foundation\\Validation\\ValidatesRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Validation/ValidatesRequests.php',
@@ -1756,6 +1683,7 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'Illuminate\\Session\\FileSessionHandler' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/FileSessionHandler.php',
         'Illuminate\\Session\\Middleware\\AuthenticateSession' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/Middleware/AuthenticateSession.php',
         'Illuminate\\Session\\Middleware\\StartSession' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php',
+        'Illuminate\\Session\\NullSessionHandler' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/NullSessionHandler.php',
         'Illuminate\\Session\\SessionManager' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/SessionManager.php',
         'Illuminate\\Session\\SessionServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/SessionServiceProvider.php',
         'Illuminate\\Session\\Store' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Session/Store.php',
@@ -1811,6 +1739,7 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
         'Illuminate\\Support\\NamespacedItemResolver' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/NamespacedItemResolver.php',
         'Illuminate\\Support\\Optional' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Optional.php',
         'Illuminate\\Support\\Pluralizer' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Pluralizer.php',
+        'Illuminate\\Support\\ProcessUtils' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/ProcessUtils.php',
         'Illuminate\\Support\\ServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/ServiceProvider.php',
         'Illuminate\\Support\\Str' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Str.php',
         'Illuminate\\Support\\Testing\\Fakes\\BusFake' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/Testing/Fakes/BusFake.php',
@@ -3993,10 +3922,10 @@ class ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit8e3ef1c0d5df66a104fb154e52485f0b::$classMap;
+            $loader->firstCharsPsr4 = ComposerStaticInit30e7ffe1e81ae4c53f25e88f5e910943::$firstCharsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit30e7ffe1e81ae4c53f25e88f5e910943::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit30e7ffe1e81ae4c53f25e88f5e910943::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit30e7ffe1e81ae4c53f25e88f5e910943::$classMap;
 
         }, null, ClassLoader::class);
     }
